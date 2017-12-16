@@ -6,6 +6,7 @@
 package com.valensi.formbean;
 
 import com.valensi.model.Product;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,25 +18,18 @@ public class CartBean {
     private Map<Integer, Product> carts;
 
     public CartBean() {
+        carts = new HashMap<>();
     }
 
     public CartBean(Map<Integer, Product> carts) {
         this.carts = carts;
     }
-
-    /**
-     * @return the carts
-     */
-    public Map<Integer, Product> getCarts() {
+    
+    public Map<Integer, Product> getCarts(){
         return carts;
     }
-
-    /**
-     * @param carts the carts to set
-     */
-    public void setCarts(Map<Integer, Product> carts) {
+    
+    public void setCarts(Map<Integer, Product> carts){
         this.carts = carts;
     }
-    
-    
 }

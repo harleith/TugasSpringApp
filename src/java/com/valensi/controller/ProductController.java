@@ -6,7 +6,6 @@
 package com.valensi.controller;
 
 import com.valensi.dao.ProductService;
-import static com.valensi.model.Cart_.product;
 import com.valensi.model.Product;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

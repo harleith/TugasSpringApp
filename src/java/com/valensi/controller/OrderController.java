@@ -27,8 +27,7 @@ public class OrderController {
     @Autowired
     ProductService ps;
     
-    @Autowired
-    CartBean cart;
+    CartBean cart = new CartBean();
     int no = 1;
     
     @RequestMapping(value=" /add/{productId}")
@@ -38,7 +37,7 @@ public class OrderController {
             Product prod = ps.findById(productId);
             if (prod == null) {
                 model.addAttribute("errMsg", "Belom ada barang yg dipilih");
-                return "tblproduct";
+                return "tabelproduct";
             }
             cart.getCarts().put(no++, prod);
             int count = cart.getCarts().size();
@@ -51,4 +50,31 @@ public class OrderController {
         }
         return "redirect:/product/all";
     }
+    
+    @RequestMapping(value ="/show")
+    public String showCart (Model model, HttpSession session) {
+        return "cartok";
+    }
+    
+    @RequestMapping(value= "/{productID/{value}")
+    public String removeCart (@PathVariable Integer productID, Model model, HttpSession session) {
+        
+        try{
+            Product prod = ps.findById(productID);
+            if (prod == null) {
+            model.addAttribute("errMsg", "Belon ada yangg di pilih");
+            return "product";
+        }
+            cart.getCarts().remove(no, prod);
+            cart.getCarts().remove(ps);
+            int count = cart.getCarts().size();
+            System.out.println("total: "+ count);
+            model.addAttribute("carts", count);
+            session.setAttribute("cartsess", cart);
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "cartok";
+}
 }
