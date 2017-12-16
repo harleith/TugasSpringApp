@@ -35,15 +35,13 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String namaProduct;
-    private Double harga;
+    public Double harga;
     private Integer stok;
 
     public Product() {
     }
 
-    public Product(Cart cart, int id, String namaProduct, Double harga, Integer stok) {
-        this.cart = cart;
-        this.id = id;
+    public Product(String namaProduct, Double harga, Integer stok) {
         this.namaProduct = namaProduct;
         this.harga = harga;
         this.stok = stok;
