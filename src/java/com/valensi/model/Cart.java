@@ -30,7 +30,21 @@ public class Cart implements Serializable {
     Customer customer ;
     
     @OneToMany(mappedBy = "cart")
-    List<Product> product;
+    private List<Product> carts;
+
+    /**
+     * @return the carts
+     */
+    public List<Product> getCarts() {
+        return carts;
+    }
+
+    /**
+     * @param carts the carts to set
+     */
+    public void setCarts(List<Product> carts) {
+        this.carts = carts;
+    }
     
     
     public int getId() {

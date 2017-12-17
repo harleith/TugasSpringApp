@@ -6,8 +6,10 @@
 package com.valensi.controller;
 
 import com.valensi.dao.ProductService;
+import com.valensi.model.Cart;
 import com.valensi.model.Product;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,4 +37,16 @@ public class ProductController {
         model.addAttribute("product", product);
         return "detail";
     }
+    
+  @RequestMapping("/add")
+    public String addToCart(HttpSession session,Model model) {
+        Cart carts = (Cart) session.getAttribute("user");
+        Product product = (Product) session.getAttribute("product");
+        carts.getCarts().add(product);
+        model.addAttribute("msg", "berhasil ditambahkan ke keranjang");
+        session.removeAttribute("product");
+        return "succes";
+        
+    }
+    
 }

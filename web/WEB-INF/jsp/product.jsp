@@ -49,14 +49,16 @@
                     <th> </th>
                 </tr>
 
+                <div class="col-9">Jumlah kerajang anda : ${Cart.carts.size()} <br>
+                   </div>
+                
                 <c:forEach var="c" items="${product}">
                     <tr class="warning">
                         <td> <a href="${c.id}"> ${c.namaProduct}</a></td>
                         <td> ${c.harga}</td>
                         <td> ${c.stok} </td>
                         <td> <div>
-                                <a href="#" class="btn btn-info" role="button">update</a>
-                                <a href="#" class="btn btn-info" role="button">delete</a>
+                                <b><a href="add"><button type="submit">TambahkanKeranjang</button> </a></b>
                             </div>
                         </td>
                     </tr>

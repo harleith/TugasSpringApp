@@ -30,7 +30,7 @@ public class OrderController {
     CartBean cart = new CartBean();
     int no = 1;
     
-    @RequestMapping(value=" /add/{productId}")
+    @RequestMapping(value=" /add")
     public String addCart(@PathVariable Integer productId, Model model, HttpSession session) {
 
         try {

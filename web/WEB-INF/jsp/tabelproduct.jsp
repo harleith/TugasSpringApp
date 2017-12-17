@@ -17,7 +17,7 @@
         <c:forEach var="c" items="${Product}">
             <p>
                 <a href="{c.id}"> ${c.productNama}</a>
-                <a href="{pageContext.request.contextPath}/order/add/${c.id}">add to cart</a>
+                <b><a href="add"><button type="submit">TambahkanKeranjang</button> </a></b>
             </p>
         </c:forEach>
     </body>
