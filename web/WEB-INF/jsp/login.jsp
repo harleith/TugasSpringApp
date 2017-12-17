@@ -19,17 +19,18 @@
         <div class="container">
 
             <b>${errMsg}</b>
-            <div class="card">
+            <div class="card" align="center">
                 <div class="card-header">
                     Login Form
                 </div>
-                <div class="card-body">
+                <div class="card-body" align="center">
                     <form:form action="${pageContext.request.contextPath}/login/check" modelAttribute="loginBean" method="POST" >
                         <table>
-                            <tr><td><form:label path="username">Username</form:label></td>
-                                <td><form:input path="username"/></td></tr>
-                            <tr><td><form:label path="password">Password</form:label></td>
-                                <td><form:password path="password" /></td></tr>
+                            <tr><td><form:label path="username">Username </form:label></td>
+                                <td><form:input path="username"cssClass="form-control"/></td></tr>
+                            
+                            <tr><td><form:label path="password">Password </form:label></td>
+                                <td><form:password path="password" cssClass="form-control"/></td></tr>
                             <tr><td></td><td><form:button name="submitButton" value="Submit">Submit</form:button></td></tr>            
                             </table>            
                     </form:form>

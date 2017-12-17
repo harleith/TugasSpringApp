@@ -15,27 +15,31 @@
         <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
     </head>
     <body> 
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
+        <div align="center">
+                <legend>
                      Form Registration
-                </div>
-                <div class="card-body">
+                </legend>
+        </div>
+        <div class="container col-sm-4" style="padding: 40px" align="center">
                     <form:form action="register/save" modelAttribute="registerBean" method="POST" >
                         <table>
+                            <div class="form-group">
                             <tr><td><form:label path="nama">Nama</form:label></td>
-                                <td><form:input path="nama"/></td></tr>
+                                <td><form:input path="nama" cssClass="form-control"/></td></tr>
+                            
                             <tr><td><form:label path="email">Email</form:label></td>
-                                <td><form:input path="email"/></td></tr>\
+                                <td><form:input path="email" cssClass="form-control"/></td></tr>
                            <tr><td><form:label path="alamat">Alamat</form:label></td>
-                                <td><form:input path="alamat"/></td></tr>
+                                <td><form:input path="alamat" cssClass="form-control"/></td></tr>
                             <tr><td><form:label path="username">Username</form:label></td>
-                                <td><form:input path="username"/></td></tr>
+                                <td><form:input path="username" cssClass="form-control"/></td></tr>
                             <tr><td><form:label path="password">Password</form:label></td>
-                                <td><form:password path="password" /></td></tr>
+                                <td><form:password path="password" cssClass="form-control"/></td></tr>
                             <tr><td></td><td><form:button name="submitButton" value="Submit">Submit</form:button></td></tr>            
-                            </table>            
+                            </table>   
+                        
                     </form:form>
+            
                 </div>
             </div>
         </div>
