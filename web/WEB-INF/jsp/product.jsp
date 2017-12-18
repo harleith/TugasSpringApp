@@ -58,7 +58,7 @@
                         <td> ${c.stok} </td>
                         <td> <div>
 
-                                <b><a href="${pageContext.request.contextPath}/cart/add/${c.id}"><button type="submit">TambahkanKeranjang</button> </a></b>
+                                <b><a href="${pageContext.request.contextPath}/cart/add/${c.id}" class="btn btn-success">TambahkanKeranjang</a></b>
 
                             </div>  
                         </td>
