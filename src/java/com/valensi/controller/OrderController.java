@@ -29,7 +29,7 @@ public class OrderController {
 
     CartBean cart = new CartBean();
     double totalHargaDalamChart;
-    int no = 1;
+    int key = 1;
 
     @RequestMapping(value = "/add/{productID}")
     public String addCart(@PathVariable Integer productID, Model model, HttpSession session) {
@@ -37,7 +37,7 @@ public class OrderController {
         try {
             Product prod = ps.findById(productID);
             totalHargaDalamChart = totalHargaDalamChart + prod.getHarga();
-            cart.getCarts().put(no++, prod);
+            cart.getCarts().put(key++, prod);
             int count = cart.getCarts().size();
             System.out.println("total: " + count);
             model.addAttribute("carts", count);
@@ -63,8 +63,8 @@ public class OrderController {
         return "cartok";
     }
 
-    @RequestMapping(value = "/{productID}/{key}")
-    public String removeCart(@PathVariable Integer productID, @PathVariable Integer key, Model model, HttpSession session) {
+    @RequestMapping(value = "/remove/{productID}/{value}")
+    public String removeCart(@PathVariable Integer productID, @PathVariable Integer value, Model model, HttpSession session) {
 
         try {
             Product prod = ps.findById(productID);
@@ -73,7 +73,7 @@ public class OrderController {
                 return "product";
             }
             totalHargaDalamChart = totalHargaDalamChart - prod.getHarga();
-            cart.getCarts().remove(no, prod);
+            cart.getCarts().remove(key, prod);
             cart.getCarts().remove(ps);
             int count = cart.getCarts().size();
 //            System.out.println("total: "+ count);

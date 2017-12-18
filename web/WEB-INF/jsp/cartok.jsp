@@ -17,7 +17,7 @@
         <h3><a href="#">Cart: ${cart.carts.size()}</a></h3>
                 <c:forEach var="c" items="${cart.carts}">
                     <label>Product Name: ${c.value.namaProduct} Harga: ${c.value.harga}</label>
-                    <a href="${pageContext.request.contextPath}/cart/remove/${c.key}" class="btn btn-success">Remove</a>
+                    <a href="${pageContext.request.contextPath}/cart/remove/${c.value.id}/${c.key}" class="btn btn-success">Remove</a>
                     <br/>
                 </c:forEach>
     </body>
