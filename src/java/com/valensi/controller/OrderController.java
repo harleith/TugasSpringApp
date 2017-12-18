@@ -8,6 +8,7 @@ package com.valensi.controller;
 import com.valensi.dao.ProductService;
 import com.valensi.formbean.CartBean;
 import com.valensi.model.Product;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,10 +52,18 @@ public class OrderController {
 
     @RequestMapping(value = "/show")
     public String showCart(Model model, HttpSession session) {
+        Map<Integer, Product> cartz = cart.getCarts();
+        double total = 0.0;
+        for (Map.Entry<Integer, Product> entry : cartz.entrySet()) {
+            Product value = entry.getValue();
+            total = total + value.getHarga();
+        }
+        totalHargaDalamChart = total;
+        model.addAttribute("cartok", total);
         return "cartok";
     }
 
-    @RequestMapping(value = "/{productID/{value}")
+    @RequestMapping(value = "/{productID}/{value}")
     public String removeCart(@PathVariable Integer productID, @PathVariable Integer value, Model model, HttpSession session) {
 
         try {
@@ -65,7 +74,7 @@ public class OrderController {
             }
             totalHargaDalamChart = totalHargaDalamChart - prod.getHarga();
             cart.getCarts().remove(no, prod);
-//            cart.getCarts().remove(ps);
+            cart.getCarts().remove(ps);
             int count = cart.getCarts().size();
 //            System.out.println("total: "+ count);
             session.setAttribute("total", totalHargaDalamChart);
