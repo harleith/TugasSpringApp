@@ -19,22 +19,23 @@
     <body>
         <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
 
-       <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Harry Oktavianus Darmawan</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Harry Oktavianus Darmawan</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Customer</a></li>
                     <li><a href="#">Product</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/SpringApp/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="${pageContext.request.contextPath}/cart/show"> Jumlah cart: ${cart.carts.size()}</a></li>
+                    <li><a href="/SpringApp/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>
 
         <div class="panel panel-primary">
             <div class="panel-heading">Tabel Product</div>
@@ -49,20 +50,20 @@
                     <th> </th>
                 </tr>
 
-                <div class="col-9">Jumlah kerajang anda : ${Cart.carts.size()} <br>
-                   </div>
-                
+
                 <c:forEach var="c" items="${product}">
                     <tr class="warning">
                         <td> <a href="${c.id}"> ${c.namaProduct}</a></td>
                         <td> ${c.harga}</td>
                         <td> ${c.stok} </td>
                         <td> <div>
-                                <b><a href="add"><button type="submit">TambahkanKeranjang</button> </a></b>
-                            </div>
+
+                                <b><a href="${pageContext.request.contextPath}/cart/add/${c.id}"><button type="submit">TambahkanKeranjang</button> </a></b>
+
+                            </div>  
                         </td>
                     </tr>
-                    
+
                 </c:forEach>
             </table>
         </div>

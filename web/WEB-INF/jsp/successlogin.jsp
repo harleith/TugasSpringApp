@@ -14,7 +14,6 @@
         <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
     </head>
     <body>
-        
         <div class="container">
             <h1>${user.username}, Anda berhasil Login</h1>
              <c:if test="${not empty sessionScope.user}">

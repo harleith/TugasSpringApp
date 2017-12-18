@@ -14,10 +14,10 @@
     </head>
     <body>
         <h1>Product</h1>
-        <c:forEach var="c" items="${Product}">
+        <c:forEach var="c" items="${tabelproduct}">
             <p>
                 <a href="{c.id}"> ${c.productNama}</a>
-                <b><a href="add"><button type="submit">TambahkanKeranjang</button> </a></b>
+                <b><a href="${pageContext.request.contextPath}/cart/add/${c.id}"><button type="submit">TambahkanKeranjang</button> </a></b>
             </p>
         </c:forEach>
     </body>

@@ -21,24 +21,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/cart")
 public class OrderController {
     
     @Autowired
     ProductService ps;
     
     CartBean cart = new CartBean();
+    double totalHargaDalamChart;
     int no = 1;
     
-    @RequestMapping(value=" /add")
+    @RequestMapping(value="/add/{productID}")
     public String addCart(@PathVariable Integer productId, Model model, HttpSession session) {
 
         try {
             Product prod = ps.findById(productId);
-            if (prod == null) {
-                model.addAttribute("errMsg", "Belom ada barang yg dipilih");
-                return "tabelproduct";
-            }
+            totalHargaDalamChart = totalHargaDalamChart + prod.getHarga();
             cart.getCarts().put(no++, prod);
             int count = cart.getCarts().size();
             System.out.println("total: "+count);
@@ -57,7 +55,7 @@ public class OrderController {
     }
     
     @RequestMapping(value= "/{productID/{value}")
-    public String removeCart (@PathVariable Integer productID, Model model, HttpSession session) {
+    public String removeCart (@PathVariable Integer productID,@PathVariable Integer value, Model model, HttpSession session) {
         
         try{
             Product prod = ps.findById(productID);
@@ -65,10 +63,12 @@ public class OrderController {
             model.addAttribute("errMsg", "Belon ada yangg di pilih");
             return "product";
         }
+            totalHargaDalamChart = totalHargaDalamChart - prod.getHarga();
             cart.getCarts().remove(no, prod);
-            cart.getCarts().remove(ps);
+//            cart.getCarts().remove(ps);
             int count = cart.getCarts().size();
-            System.out.println("total: "+ count);
+//            System.out.println("total: "+ count);
+            session.setAttribute("total", totalHargaDalamChart);
             model.addAttribute("carts", count);
             session.setAttribute("cartsess", cart);
         

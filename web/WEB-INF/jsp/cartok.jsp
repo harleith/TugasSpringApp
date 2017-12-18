@@ -13,8 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <h3><a href="#">Cart: ${cart.carts.size}</a></h3>
+        <h3>Cart: ${cart.carts.size}</h3>
         <c:forEach var="c" items="${cart.carts.value()}">
             <label>Product Name: ${c.productNama}</label>
         </c:forEach>

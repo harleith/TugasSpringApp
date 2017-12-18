@@ -58,6 +58,7 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="${pageContext.request.contextPath}/cart/show"> <img src="<c:url value="/resources/image/spc.jpg.png" />" > : ${cart.carts.size()}</a></li>
                     <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><a href="${pageContext.request.contextPath}/register"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
                 </ul>
