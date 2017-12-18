@@ -63,8 +63,8 @@ public class OrderController {
         return "cartok";
     }
 
-    @RequestMapping(value = "/{productID}/{value}")
-    public String removeCart(@PathVariable Integer productID, @PathVariable Integer value, Model model, HttpSession session) {
+    @RequestMapping(value = "/{productID}/{key}")
+    public String removeCart(@PathVariable Integer productID, @PathVariable Integer key, Model model, HttpSession session) {
 
         try {
             Product prod = ps.findById(productID);

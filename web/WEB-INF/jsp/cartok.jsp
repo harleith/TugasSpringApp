@@ -15,9 +15,10 @@
     <body>
         <div>Total belanjaan Anda: ${cartok}</div>
         <h3><a href="#">Cart: ${cart.carts.size()}</a></h3>
-                <c:forEach var="c" items="${cart.carts.values()}">
-                    <label>Product Name: ${c.namaProduct} Harga: ${c.harga}</label><br> 
-                                  
+                <c:forEach var="c" items="${cart.carts}">
+                    <label>Product Name: ${c.value.namaProduct} Harga: ${c.value.harga}</label>
+                    <a href="${pageContext.request.contextPath}/cart/remove/${c.key}" class="btn btn-success">Remove</a>
+                    <br/>
                 </c:forEach>
     </body>
 </html>
