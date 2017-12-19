@@ -64,23 +64,23 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/remove/{productID}/{value}")
-    public String removeCart(@PathVariable Integer productID, @PathVariable Integer value, Model model, HttpSession session) {
+    public String removeCart(@PathVariable Integer productID, @PathVariable Integer value, HttpSession totalHarga, Model model) {
 
         try {
             Product prod = ps.findById(productID);
             if (prod == null) {
-                model.addAttribute("errMsg", "Belon ada yangg di pilih");
+                model.addAttribute("errMsg", "Belom ada barang yg dipilih");
                 return "product";
             }
+            Double tot;
             totalHargaDalamChart = totalHargaDalamChart - prod.getHarga();
-            cart.getCarts().remove(key, prod);
-            cart.getCarts().remove(ps);
+            cart.getCarts().remove(value, prod);
+//            cart.getCarts().remove(ps);
             int count = cart.getCarts().size();
-//            System.out.println("total: "+ count);
-            session.setAttribute("total", totalHargaDalamChart);
-            model.addAttribute("carts", count);
-            session.setAttribute("cartsess", cart);
+//            System.out.println("tot: "+count);
+            model.addAttribute("cartok", totalHargaDalamChart);
 
+//            session.setAttribute("cart", cart);
         } catch (Exception e) {
             e.printStackTrace();
         }
