@@ -20,5 +20,5 @@
           p:suffix=".jsp" />
     <mvc:resources mapping="/resources/**" location="/Resource/"
 	cache-period="31556926"/>
-    <mvc:annotation-driven />
+   <mvc:annotation-driven />  <!--- karena validasi menggunakan anotasi dalam file Form Bean. -->
 </beans>

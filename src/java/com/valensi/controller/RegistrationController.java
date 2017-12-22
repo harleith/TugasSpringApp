@@ -9,9 +9,12 @@ import com.valensi.dao.UserService;
 import com.valensi.diggestEnkripsi.PasswordDiggest;
 import com.valensi.formbean.RegisterFormbean;
 import com.valensi.model.Customer;
+import javax.validation.Valid;
+import javax.xml.ws.BindingType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,8 +38,12 @@ public class RegistrationController {
     }
     
     @RequestMapping(value="/save") 
-    public String saveRegistration(@ModelAttribute("registerBean") RegisterFormbean registerBean, 
-            Model model) {
+    public String saveRegistration(@Valid @ModelAttribute("registerBean") RegisterFormbean registerBean, BindingResult result ,Model model) {
+        
+        if (result.hasErrors()) {
+            return "registration";
+        }
+        
         Customer cust = new Customer();
         String encryptedPassword = 
                 PasswordDiggest.createEncryptedPassword(registerBean.getPassword());

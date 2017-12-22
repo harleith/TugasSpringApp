@@ -13,6 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Form Registration</title>
         <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
+        <style>
+            .error {
+                color: red; font-weight: bold;
+            }
+        </style>
     </head>
     <body> 
         <div align="center">
@@ -25,16 +30,20 @@
                         <table>
                             <div class="form-group">
                             <tr><td><form:label path="nama">Nama</form:label></td>
-                                <td><form:input path="nama" cssClass="form-control"/></td></tr>
+                                <td><form:input path="nama" cssClass="form-control"/></td><td><form:errors path="nama" cssClass="error"/></td></tr>
                             
                             <tr><td><form:label path="email">Email</form:label></td>
-                                <td><form:input path="email" cssClass="form-control"/></td></tr>
+                                <td><form:input path="email" cssClass="form-control"/></td><td><form:errors path="email" cssClass="error"/></td></tr>
+                            
                            <tr><td><form:label path="alamat">Alamat</form:label></td>
-                                <td><form:input path="alamat" cssClass="form-control"/></td></tr>
+                               <td><form:input path="alamat" cssClass="form-control"/></td><td><form:errors path="alamat" cssClass="error"/></td></tr>
+                           
                             <tr><td><form:label path="username">Username</form:label></td>
-                                <td><form:input path="username" cssClass="form-control"/></td></tr>
+                                <td><form:input path="username" cssClass="form-control"/></td><td><form:errors path="username" cssClass="error"/></td></tr>
+                            
                             <tr><td><form:label path="password">Password</form:label></td>
-                                <td><form:password path="password" cssClass="form-control"/></td></tr>
+                                <td><form:password path="password" cssClass="form-control"/></td><td><form:errors path="password" cssClass="error"/></td></tr>
+                            
                             <tr><td></td><td><form:button name="submitButton" value="Submit">Submit</form:button></td></tr>            
                             </table>   
                         

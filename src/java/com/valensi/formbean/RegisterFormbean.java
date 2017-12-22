@@ -5,16 +5,26 @@
  */
 package com.valensi.formbean;
 
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  *
  * @author user
  */
 public class RegisterFormbean {
 
+    @Email(message = "email ga valid coy")
     private String email;
+    @NotEmpty
     private String nama;
+    @NotEmpty (message = "input usernamenya dong kalau enggak mana bisa daftar :'>")
     private String username;
+    @NotEmpty
+    @Size(min = 6, max = 10, message ="Passwordnya minimal 6 maximal 10!!!! ")
     private String password;
+    @NotEmpty
     private String alamat;
 
     public RegisterFormbean() {
